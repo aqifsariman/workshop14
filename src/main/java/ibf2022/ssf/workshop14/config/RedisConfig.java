@@ -42,6 +42,7 @@ public class RedisConfig {
             config.getUsername();
             config.setPassword(redisPassword);
         }
+        /* */
         config.setDatabase((redisDatabase.get()));
         final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
         final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);

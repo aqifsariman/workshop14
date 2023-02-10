@@ -1,11 +1,15 @@
 package ibf2022.ssf.workshop14.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ibf2022.ssf.workshop14.model.Contact;
 import ibf2022.ssf.workshop14.services.AddressBookService;
@@ -33,6 +37,20 @@ public class AddressBookController {
         addressBookService.saveContact(contact);
         model.addAttribute("contact", contact);
         response.setStatus(HttpServletResponse.SC_CREATED);
+        return "contact";
+    }
+
+    @GetMapping("/contact")
+    public String getAllContacts(Model model, @RequestParam(name = "startIndex") Integer startIndex) {
+        List<Contact> result = addressBookService.findAllContact(startIndex);
+        model.addAttribute("contacts", result);
+        return "list";
+    }
+
+    @GetMapping(path = "/contact/{contactId}")
+    public String getContactDetails(Model model, @PathVariable(value = "contactId") String contactId) {
+        Contact contact = addressBookService.findContactById(contactId);
+        model.addAttribute("contact", contact);
         return "contact";
     }
 }
