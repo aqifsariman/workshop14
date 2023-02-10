@@ -40,6 +40,13 @@ public class AddressBookController {
         return "contact";
     }
 
+    /*
+     * REQUEST PARAM IS FOR WHEN THERE'S
+     * THINGS TO BE EDITED FOR EXAMPLE
+     * SETTING COUNTRY AND CITY TO GET
+     * WEATHER UPDATES THERE
+     */
+
     @GetMapping("/contact")
     public String getAllContacts(Model model, @RequestParam(name = "startIndex") Integer startIndex) {
         List<Contact> result = addressBookService.findAllContact(startIndex);
@@ -47,6 +54,12 @@ public class AddressBookController {
         return "list";
     }
 
+    /*
+     * PATH VARIABLE IS FOR DIRECT ACCESS
+     * FOR EXAMPLE A LIST OF PRODUCTS AND
+     * YOU WANT TO CLICK ON THAT PRODUCT
+     * TO GET TO THE PAGE DIRECTLY
+     */
     @GetMapping(path = "/contact/{contactId}")
     public String getContactDetails(Model model, @PathVariable(value = "contactId") String contactId) {
         Contact contact = addressBookService.findContactById(contactId);

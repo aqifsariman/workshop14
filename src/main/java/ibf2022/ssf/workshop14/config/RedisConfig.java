@@ -14,8 +14,23 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+/*
+ * <<<<<<<<<< RAILWAY SET UP >>>>>>>>>>
+ * 1.   RAILWAY LOGIN
+ * 2.   RAILWAY INIT
+ * 3.   ADD REDIS DATABASE FROM CLICKING NEW ON TOP RIGHT
+ * 4.   RAILWAY UP
+ * 5.   CREATE NEW VARIABLE IN RAILWAY TO SET REDISUSER, REDISHOST ETC..
+ * 6.   GENERATE DOMAIN FROM SETTINGS
+ */
+
 @Configuration
 public class RedisConfig {
+    /*
+     * <<<<<<<<<<<<<<<<<<<< CONFIG >>>>>>>>>>
+     * INJECTED FROM APPLICATION.PROPERTIES
+     * SETTING THE ENVIRONMENT VARIABLES
+     */
     @Value("${spring.redis.host}")
     private String redisHost;
 

@@ -22,6 +22,8 @@ public class AddressBookRepository {
         return (Contact) redisTemplate.opsForHash().get("addressBookMap", contactId);
     }
 
+
+    
     public List<Contact> findAll(int startIndex) {
         List<Object> contactList = redisTemplate.opsForList().range("contactList", startIndex, 10);
         List<Contact> contacts = redisTemplate.opsForHash()
